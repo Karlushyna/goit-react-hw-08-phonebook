@@ -6,7 +6,7 @@ import initialState from './initialState';
 
 import styles from './myContactsForm.module.css';
 
-import { getAllContacts } from 'redux/contacts/contacts-selectors';
+import { getAllContacts } from 'redux/contacts/selectors';
 
 import { addContact } from 'redux/contacts/operations';
 

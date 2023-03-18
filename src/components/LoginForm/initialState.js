@@ -1,6 +1,6 @@
-const initialState = {
+export const initialState = {
   email: '',
   password: '',
 };
 
-export default initialState;
+

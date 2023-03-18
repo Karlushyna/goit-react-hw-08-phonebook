@@ -1,4 +1,4 @@
-const fields = {
+export const fields = {
   email: {
     type: 'email',
     name: 'email',
@@ -15,4 +15,4 @@ const fields = {
   },
 };
 
-export default fields;
+

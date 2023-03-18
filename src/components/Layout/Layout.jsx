@@ -1,8 +1,8 @@
-import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { current } from 'redux/auth/operations';
 
-const AuthLayout = ({ children }) => {
+export const Layout = ({ children }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -12,4 +12,4 @@ const AuthLayout = ({ children }) => {
   return <>{children}</>;
 };
 
-export default AuthLayout;
+

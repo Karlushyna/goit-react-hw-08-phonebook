@@ -1,13 +1,13 @@
 import { useState } from 'react';
 
-const useForm = ({ initialState, onSubmit }) => {
+
+export const useForm = ({ initialState, onSubmit }) => {
   const [state, setState] = useState({ ...initialState });
 
   const handleChange = ({ target }) => {
     setState(prevState => {
-      const { name, value, checked, type } = target;
+      const { name, value, type, checked  } = target;
       const newValue = type === 'checkbox' ? checked : value;
-
       return { ...prevState, [name]: newValue };
     });
   };
@@ -21,4 +21,4 @@ const useForm = ({ initialState, onSubmit }) => {
   return { state, setState, handleChange, handleSubmit };
 };
 
-export default useForm;
+
