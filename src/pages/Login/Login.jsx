@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 
-import { login } from 'redux/auth/auth-operations';
+import { login } from 'redux/auth/operations';
 
 import LoginForm from 'components/LoginForm/LoginForm';
 

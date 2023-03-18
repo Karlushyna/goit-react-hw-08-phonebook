@@ -8,7 +8,7 @@ import styles from './myContactsForm.module.css';
 
 import { getAllContacts } from 'redux/contacts/contacts-selectors';
 
-import { addContact } from 'redux/contacts/contacts-operations';
+import { addContact } from 'redux/contacts/operations';
 
 const MyContactsForm = () => {
   const [state, setState] = useState({ ...initialState });

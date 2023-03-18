@@ -1,4 +1,4 @@
-import instance from 'shared/api/auth';
+import instance from 'services/auth';
 
 export const getAllContacts = async () => {
   const { data } = await instance.get('/contacts');

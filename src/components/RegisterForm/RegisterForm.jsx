@@ -1,7 +1,7 @@
-import TextField from 'shared/components/TextField/TextField';
-import Button from 'shared/components/Button/Button';
+import TextField from 'components/TextField/TextField';
+import Button from 'components/Button/Button';
 
-import useForm from 'shared/hooks/useForm';
+import useForm from 'components/hooks/useForm';
 
 import fields from './fields';
 import initialState from './initialState';

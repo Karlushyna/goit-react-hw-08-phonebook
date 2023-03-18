@@ -1,9 +1,9 @@
-import { isUserLogin } from 'redux/auth/auth-selectors';
+import { isUserLogin } from 'redux/auth/selectors';
 import { useSelector } from 'react-redux';
 
-import { getUser } from 'redux/auth/auth-selectors';
+import { getUser } from 'redux/auth/selectors';
 
-import styles from './homePage.module.css';
+import styles from './home.module.css';
 
 const HomePage = () => {
   const isLogin = useSelector(isUserLogin);

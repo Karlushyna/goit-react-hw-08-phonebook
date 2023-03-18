@@ -4,7 +4,7 @@ import storage from 'redux-persist/lib/storage';
 
 import contactsReducer from './contacts/contacts-slice';
 import filterReducer from './filter/filter-slice';
-import authReducer from './auth/auth-slice';
+import authReducer from './auth/slice';
 
 const persistConfig = {
   key: 'root',

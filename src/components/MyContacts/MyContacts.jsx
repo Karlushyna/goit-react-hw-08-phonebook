@@ -2,7 +2,7 @@ import MyContactsForm from './MyContactsForm/MyContactsForm';
 import MyContactList from './MyContactList/MyContactList';
 import MyContactsFilter from './MyContactsFilter/MyContactsFilter';
 import { useSelector } from 'react-redux';
-import Loader from 'shared/components/Loader/Loader';
+import Loader from 'components/Loader/Loader';
 
 import { getLoadingStatus } from 'redux/contacts/contacts-selectors';
 
