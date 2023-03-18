@@ -1,0 +1,20 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.field {
+  padding: 5px;
+  border: 2px solid black;
+  border-radius: 5px;
+  transition: color 2500ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.field:focus {
+  border-color: orange;
+  outline: 2px solid orange;
+}

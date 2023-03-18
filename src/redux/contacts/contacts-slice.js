@@ -1,29 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { NotificationManager } from 'react-notifications';
-import 'react-notifications/lib/notifications.css';
+
 import {
   fetchContacts,
-  fetchDeleteContact,
-  fetchAddContact,
-  fetchEditContact,
+  addContact,
+  deleteContact,
 } from './contacts-operations';
 
 const initialState = {
-  contacts: [],
+  items: [],
   loading: false,
   error: null,
-};
-
-const handlePending = store => {
-  store.loading = true;
-  store.error = null;
-};
-
-const handleRejected = (store, { payload }) => {
-  store.loading = false;
-  store.error = payload;
-  const error = payload ? payload : 'Sorry... Something went wrong...';
-  NotificationManager.error(error);
 };
 
 const contactsSlice = createSlice({
@@ -31,38 +17,40 @@ const contactsSlice = createSlice({
   initialState,
   extraReducers: builder => {
     builder
-      .addCase(fetchContacts.pending, handlePending)
+      .addCase(fetchContacts.pending, store => {
+        store.loading = true;
+      })
       .addCase(fetchContacts.fulfilled, (store, { payload }) => {
         store.loading = false;
-        store.error = null;
-        store.contacts = payload;
+        store.items = payload;
       })
-      .addCase(fetchContacts.rejected, handleRejected)
-      .addCase(fetchDeleteContact.pending, handlePending)
-      .addCase(fetchDeleteContact.fulfilled, (store, { payload }) => {
+      .addCase(fetchContacts.rejected, (store, { payload }) => {
         store.loading = false;
-        const index = store.contacts.findIndex(
-          contact => contact.id === payload
-        );
-        store.contacts.splice(index, 1);
+        store.error = payload;
       })
-      .addCase(fetchDeleteContact.rejected, handleRejected)
-      .addCase(fetchAddContact.pending, handlePending)
-      .addCase(fetchAddContact.fulfilled, (store, { payload }) => {
+      .addCase(addContact.pending, store => {
+        store.loading = true;
+      })
+      .addCase(addContact.fulfilled, (store, { payload }) => {
         store.loading = false;
-        store.contacts = [payload, ...store.contacts];
+        store.items.push(payload);
       })
-      .addCase(fetchAddContact.rejected, handleRejected)
-      .addCase(fetchEditContact.pending, handlePending)
-      .addCase(fetchEditContact.fulfilled, (store, { payload }) => {
+      .addCase(addContact.rejected, (store, { payload }) => {
         store.loading = false;
-        const newContacts = store.contacts.map(contact =>
-          contact.id === payload.id ? payload : contact
-        );
-
-        store.contacts = [...newContacts];
+        store.error = payload;
       })
-      .addCase(fetchEditContact.rejected, handleRejected);
+      .addCase(deleteContact.pending, store => {
+        store.loading = true;
+      })
+      .addCase(deleteContact.fulfilled, (store, { payload }) => {
+        store.loading = false;
+        const index = store.items.findIndex(item => item.id === payload);
+        store.items.splice(index, 1);
+      })
+      .addCase(deleteContact.rejected, (store, { payload }) => {
+        store.loading = false;
+        store.error = payload;
+      });
   },
 });
 

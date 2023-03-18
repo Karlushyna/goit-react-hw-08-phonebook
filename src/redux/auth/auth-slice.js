@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { NotificationManager } from 'react-notifications';
-import 'react-notifications/lib/notifications.css';
+
 import { signup, login, current, logout } from './auth-operations';
 
 const initialState = {
@@ -11,63 +10,71 @@ const initialState = {
   error: null,
 };
 
-const handlePending = store => {
-  store.loading = true;
-  store.error = null;
-};
-
-const handleRejected = (store, { payload }) => {
-  store.loading = false;
-  store.error = payload;
-  const error = payload ? payload : 'Sorry... Something went wrong...';
-  NotificationManager.error(error);
-};
-
 const authSlice = createSlice({
   name: 'auth',
   initialState,
   extraReducers: builder => {
     builder
-      .addCase(signup.pending, handlePending)
-      .addCase(signup.fulfilled, (store, { payload }) => {
-        const { user, token } = payload;
-        store.loading = false;
-        store.user = user;
-        store.token = token;
-        store.isLogin = true;
+      .addCase(signup.pending, state => {
+        state.loading = true;
+        state.error = null;
       })
-      .addCase(signup.rejected, handleRejected)
-      .addCase(login.pending, handlePending)
-      .addCase(login.fulfilled, (store, { payload }) => {
+      .addCase(signup.fulfilled, (state, { payload }) => {
         const { user, token } = payload;
-        store.loading = false;
-        store.user = user;
-        store.token = token;
-        store.isLogin = true;
+        state.loading = false;
+        state.user = user;
+        state.token = token;
+        state.isLogin = true;
       })
-      .addCase(login.rejected, handleRejected)
-      .addCase(current.pending, handlePending)
-      .addCase(current.fulfilled, (store, { payload }) => {
+      .addCase(signup.rejected, (state, { payload }) => {
+        state.loading = false;
+        state.error = payload;
+      })
+      .addCase(login.pending, state => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(login.fulfilled, (state, { payload }) => {
+        const { user, token } = payload;
+        state.loading = false;
+        state.user = user;
+        state.token = token;
+        state.isLogin = true;
+      })
+      .addCase(login.rejected, (state, { payload }) => {
+        state.loading = false;
+        state.error = payload;
+      })
+      .addCase(current.pending, state => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(current.fulfilled, (state, { payload }) => {
         const { name, email } = payload;
-        const user = { name, email };
-        store.loading = false;
-        store.user = user;
-        store.isLogin = true;
+        state.loading = false;
+        state.user.name = name;
+        state.user.email = email;
+        state.isLogin = true;
       })
-      .addCase(current.rejected, (store, { payload }) => {
-        store.loading = false;
-        store.token = '';
-        const error = payload ? payload : 'Sorry... Something went wrong...';
-        NotificationManager.error(error);
+      .addCase(current.rejected, (state, { payload }) => {
+        state.loading = false;
+        state.token = '';
+        state.error = payload;
       })
-      .addCase(logout.pending, handlePending)
-      .addCase(logout.fulfilled, store => {
-        store.loading = false;
-        store.user = {};
-        store.token = '';
-        store.isLogin = false;
+      .addCase(logout.pending, state => {
+        state.loading = true;
+        state.error = null;
       })
-      .addCase(logout.rejected, handleRejected);
+      .addCase(logout.fulfilled, state => {
+        state.loading = false;
+        state.user = {};
+        state.token = '';
+        state.isLogin = false;
+      })
+      .addCase(logout.rejected, (state, { payload }) => {
+        state.loading = false;
+        state.error = payload;
+      });
   },
 });
 

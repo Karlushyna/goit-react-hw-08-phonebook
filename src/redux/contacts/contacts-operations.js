@@ -1,67 +1,39 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { NotificationManager } from 'react-notifications';
-import 'react-notifications/lib/notifications.css';
-import * as contactsApi from '../../shared/services/contactsApi';
+
+import * as api from '../../shared/services/contacts';
 
 export const fetchContacts = createAsyncThunk(
-  'contacts/fetchAllContacts',
-  async (_, thunkAPI) => {
+  'contacts/fetch-all',
+  async (_, thunnkAPI) => {
     try {
-      const data = await contactsApi.getAllContacts();
+      const data = await api.getAllContacts();
       return data;
     } catch ({ response }) {
-      return thunkAPI.rejectWithValue(response.data.message);
+      return thunnkAPI.rejectWithValue(response.data);
     }
   }
 );
 
-export const fetchDeleteContact = createAsyncThunk(
-  'contacts/deleteContact',
+export const addContact = createAsyncThunk(
+  'contacts/add',
+  async (data, { rejectWithValue }) => {
+    try {
+      const result = await api.addContact(data);
+      return result;
+    } catch ({ response }) {
+      return rejectWithValue(response.data);
+    }
+  }
+);
+
+export const deleteContact = createAsyncThunk(
+  'contacts/delete',
   async (id, { rejectWithValue }) => {
     try {
-      await contactsApi.deleteContact(id);
+      await api.deleteContact(id);
       return id;
     } catch ({ response }) {
-      return rejectWithValue(response.data.message);
-    }
-  }
-);
-
-export const fetchAddContact = createAsyncThunk(
-  'contacts/addContact',
-  async (data, { rejectWithValue }) => {
-    try {
-      const result = await contactsApi.addContact(data);
-      return result;
-    } catch ({ response }) {
-      return rejectWithValue(response.data.message);
-    }
-  },
-  {
-    condition: ({ name }, { getState }) => {
-      const {
-        contacts: { contacts },
-      } = getState();
-      if (
-        contacts.find(
-          contact => name.toLowerCase() === contact.name.toLowerCase()
-        )
-      ) {
-        NotificationManager.info(`${name} is already in contacts.`);
-        return false;
-      }
-    },
-  }
-);
-
-export const fetchEditContact = createAsyncThunk(
-  'contact/edit',
-  async (data, { rejectWithValue }) => {
-    try {
-      const result = await contactsApi.editContact(data);
-      return result;
-    } catch ({ response }) {
-      return rejectWithValue(response.data.message);
+      return rejectWithValue(response.data);
     }
   }
 );

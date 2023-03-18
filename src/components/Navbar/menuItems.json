@@ -1,0 +1,9 @@
+[
+  { "id": "1", "text": "Home page", "link": "/", "private": false },
+  {
+    "id": "2",
+    "text": "Contacts page",
+    "link": "/contacts",
+    "private": true
+  }
+]

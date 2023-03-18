@@ -1,14 +1,15 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import * as authApi from '../../shared/services/authApi';
+
+import * as api from '../../shared/api/auth';
 
 export const signup = createAsyncThunk(
   'auth/signup',
   async (data, { rejectWithValue }) => {
     try {
-      const result = await authApi.signup(data);
+      const result = await api.signup(data);
       return result;
     } catch ({ response }) {
-      return rejectWithValue(response.data.message);
+      return rejectWithValue(response);
     }
   }
 );
@@ -17,10 +18,10 @@ export const login = createAsyncThunk(
   'auth/login',
   async (data, { rejectWithValue }) => {
     try {
-      const result = await authApi.login(data);
+      const result = await api.login(data);
       return result;
     } catch ({ response }) {
-      return rejectWithValue(response.data.message);
+      return rejectWithValue(response);
     }
   }
 );
@@ -30,10 +31,10 @@ export const current = createAsyncThunk(
   async (_, { rejectWithValue, getState }) => {
     try {
       const { auth } = getState();
-      const data = await authApi.getCurrent(auth.token);
+      const data = await api.getCurrent(auth.token);
       return data;
     } catch ({ response }) {
-      return rejectWithValue(response.data.message);
+      return rejectWithValue(response);
     }
   },
   {
@@ -50,10 +51,10 @@ export const logout = createAsyncThunk(
   'auth/logout',
   async (_, { rejectWithValue }) => {
     try {
-      const data = await authApi.logout();
+      const data = await api.logout();
       return data;
     } catch ({ response }) {
-      return rejectWithValue(response.data.message);
+      return rejectWithValue(response);
     }
   }
 );

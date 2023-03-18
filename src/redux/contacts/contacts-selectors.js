@@ -1,12 +1,16 @@
-export const getFilterContacts = ({ contacts: {contacts}, filter }) => {
+export const getAllContacts = ({ contacts }) => contacts.items;
+
+export const getFilteredContacts = ({ contacts, filter }) => {
   if (!filter) {
-    return contacts;
+    return contacts.items;
   }
+
   const normalizedFilter = filter.toLowerCase();
-  return contacts.filter(contact =>
+  return contacts.items.filter(contact =>
     contact.name.toLowerCase().includes(normalizedFilter)
   );
 };
 
-export const getIsLoading = ({contacts}) => contacts.loading;
-export const getError = ({contacts}) => contacts.error;
+export const getLoadingStatus = ({ contacts }) => {
+  return contacts.loading;
+};
