@@ -1,10 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import {
-  fetchContacts,
-  addContact,
-  delContact,
-  toggleCompleted,
-} from './operations';
+import {  fetchContacts, addContact, delContact, toggleCompleted} from './operations';
 
 const handlePending = state => {
   state.isLoading = true;
@@ -65,4 +60,3 @@ export const contactsSlice = createSlice({
 });
 
 export const contactsReducer = contactsSlice.reducer;
-
