@@ -1,12 +1,9 @@
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-
-import NavbarAuth from './NavbarAuth/NavbarAuth.jsx';
-import UserMenu from './UserMenu/UserMenu';
-
-import items from './menuItems';
-
+import { NavbarAuth } from './Auth/NavbarAuth.jsx';
+import { UserMenu } from './UserMenu/UserMenu';
 import { isUserLogin } from 'redux/auth/selectors';
+import items from './menuItems';
 
 import styles from './navbar.module.css';
 

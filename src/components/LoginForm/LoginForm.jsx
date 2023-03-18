@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import TextField from 'components/TextField/TextField';
+import TextArea from 'components/TextArea/TextArea';
 import Button from 'components/Button/Button';
 import { useForm } from 'components/hooks/useForm';
 import { fields } from './fields';
@@ -17,8 +17,8 @@ export const LoginForm = ({ onSubmit }) => {
 
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
-      <TextField value={email} handleChange={handleChange} {...fields.email} />
-      <TextField
+      <TextArea value={email} handleChange={handleChange} {...fields.email} />
+      <TextArea
         value={password}
         handleChange={handleChange}
         {...fields.password}

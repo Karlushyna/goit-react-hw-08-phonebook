@@ -1,9 +1,8 @@
-import MyContactsForm from './MyContactsForm/MyContactsForm';
-import MyContactList from './MyContactList/MyContactList';
-import MyContactsFilter from './MyContactsFilter/MyContactsFilter';
+import ContactsForm from './ContactsForm/ContactsForm';
+import ContactList from './ContactList/ContactList';
+import ContactsFilter from './ContactsFilter/ContactsFilter';
 import { useSelector } from 'react-redux';
 import { Loader } from 'components/Loader/Loader';
-
 import { getLoadingStatus } from 'redux/contacts/selectors';
 
 const MyContacts = () => {
@@ -12,11 +11,11 @@ const MyContacts = () => {
   return (
     <div>
       <h1>Phonebook</h1>
-      <MyContactsForm />
+      <ContactsForm />
       <h2>Contacts</h2>
-      <MyContactsFilter />
+      <ContactsFilter />
       {loadingStatus && <Loader />}
-      <MyContactList />
+      <ContactList />
     </div>
   );
 };

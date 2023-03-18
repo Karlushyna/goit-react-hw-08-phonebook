@@ -1,7 +1,5 @@
 import { useSelector } from 'react-redux';
 import { Navigate, Outlet } from 'react-router-dom';
-
-
 import { getAuth } from 'redux/auth/selectors';
 
 const PublicRoute = () => {

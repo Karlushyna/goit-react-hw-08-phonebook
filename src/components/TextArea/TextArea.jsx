@@ -1,8 +1,9 @@
-import styles from './textField.module.css';
 import { useMemo } from 'react';
 import { nanoid } from '@reduxjs/toolkit';
 
-const TextField = ({ label, handleChange, ...props }) => {
+import styles from './text-area.module.css';
+
+const TextArea = ({ label, handleChange, ...props }) => {
   const id = useMemo(() => nanoid(), []);
   return (
     <div className={styles.wrapper}>
@@ -17,4 +18,4 @@ const TextField = ({ label, handleChange, ...props }) => {
   );
 };
 
-export default TextField;
+export default TextArea;

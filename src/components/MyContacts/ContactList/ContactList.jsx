@@ -1,13 +1,12 @@
-import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { fetchContacts } from 'redux/contacts/operations';
-
 import ContactItem from './ContactItem/ContactItem';
-import styles from './myContactList.module.css';
 import { getFilteredContacts } from 'redux/contacts/selectors';
 
-const MyContactList = () => {
+import styles from './contact-list.module.css';
+
+const ContactList = () => {
   const filteredContacts = useSelector(getFilteredContacts);
   const dispatch = useDispatch();
 
@@ -15,20 +14,20 @@ const MyContactList = () => {
     dispatch(fetchContacts());
   }, [dispatch]);
 
-  const isContacts = Boolean(filteredContacts.length);
+  const inContacts = Boolean(filteredContacts.length);
 
   return (
     <div>
-      {isContacts && (
+      {inContacts && (
         <ul className={styles.list}>
           {filteredContacts.map(({ id, name, number }) => (
             <ContactItem key={id} id={id} name={name} number={number} />
           ))}
         </ul>
       )}
-      {!isContacts && <p>No contacts in list, yet</p>}
+      {!inContacts && <p>No contacts in list, yet</p>}
     </div>
   );
 };
 
-export default MyContactList;
+export default ContactList;

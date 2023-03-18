@@ -1,13 +1,11 @@
-import styles from './userMenu.module.css';
-import Button from 'components/Button/Button';
-
 import { useSelector, useDispatch } from 'react-redux';
-
+import Button from 'components/Button/Button';
 import { logout } from 'redux/auth/operations';
-
 import { getUser } from 'redux/auth/selectors';
 
-const UserMenu = () => {
+import styles from './user-menu.module.css';
+
+export const UserMenu = () => {
   const { email } = useSelector(getUser);
   const dispatch = useDispatch();
 
@@ -23,4 +21,4 @@ const UserMenu = () => {
   );
 };
 
-export default UserMenu;
+
