@@ -23,7 +23,7 @@ export const LoginForm = ({ onSubmit }) => {
         handleChange={handleChange}
         {...fields.password}
       />
-      <Button>Login</Button>
+      <Button>Enter</Button>
     </form>
   );
 };

@@ -22,6 +22,6 @@
 }
 
 .link:global(.active) {
-  color: orangered;
+  color: rgb(129, 172, 226);
   font-weight: bold;
 }
