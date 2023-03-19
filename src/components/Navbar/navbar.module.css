@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 30px;
-  border-bottom: 1px solid;
+  border-bottom: 1px solid rgb(122, 158, 177);
   padding-bottom: 15px;
 }
 
@@ -16,8 +16,7 @@
 
 .link {
   text-decoration: none;
-  /* font-weight: bold; */
-  color: rgb(125, 157, 179);
+  color: rgb(122, 158, 177);
   display: inline-block;
   padding: 10px 15px;
 }
