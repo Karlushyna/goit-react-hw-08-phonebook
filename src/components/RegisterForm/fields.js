@@ -3,22 +3,22 @@ const fields = {
     type: 'text',
     name: 'name',
     required: true,
-    label: 'Name',
-    placeholder: 'Enter name',
+    label: 'User name',
+    placeholder: 'User name',
   },
   email: {
     type: 'email',
     name: 'email',
     required: true,
-    label: 'Email',
-    placeholder: 'Enter email',
+    label: 'User email',
+    placeholder: 'User email',
   },
   password: {
     type: 'text',
     name: 'password',
     required: true,
-    label: 'Password',
-    placeholder: 'Enter password',
+    label: 'User password',
+    placeholder: 'User password',
   },
 };
 

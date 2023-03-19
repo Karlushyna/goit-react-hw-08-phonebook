@@ -3,15 +3,15 @@ export const fields = {
     type: 'email',
     name: 'email',
     required: true,
-    label: 'Email',
-    placeholder: 'Enter email',
+    label: 'User email',
+    placeholder: 'User email',
   },
   password: {
     type: 'text',
     name: 'password',
     required: true,
-    label: 'Password',
-    placeholder: 'Enter password',
+    label: 'User password',
+    placeholder: 'User password',
   },
 };
 
