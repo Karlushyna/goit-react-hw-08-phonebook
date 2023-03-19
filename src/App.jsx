@@ -6,7 +6,7 @@ import { Layout } from 'components/Layout/Layout';
 import Navbar from 'components/Navbar/Navbar';
 import UserRoutes from 'UserRoutes';
 
-import styles from './app.module.css';
+import styles from './main.module.css';
 
 function App() {
   return (
@@ -14,9 +14,9 @@ function App() {
       <PersistGate loading={null} persistor={persistor}>
         <Layout>
           <BrowserRouter basename="/goit-react-hw-08-phonebook">
-            <div className={styles.totalContainer}>
-              <Navbar />
-              <UserRoutes />
+            <div className={styles.container}>
+              <Navbar/>
+              <UserRoutes/>
             </div>
           </BrowserRouter>
         </Layout>

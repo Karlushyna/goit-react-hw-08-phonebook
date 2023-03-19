@@ -11,18 +11,19 @@ const HomePage = () => {
   return (
     <>
       {!isLogin ? (
-        <h1 className={styles.titleLoggedIn}>
-          Welcome! Please login to your account or register to be able to use
-          the contact book
-        </h1>
+        <div className={styles.title}>
+          <p>Welcome back to Phonebook application!</p> 
+          <p>Please log in or sign up to start </p>  
+        </div>
       ) : (
-        <h1 className={styles.titleNotLoggedIn}>
-          Congratulations! You are logged in as{' '}
-          <span className={styles.span}>{email}</span>. You have access to all
-          the contacts you saved before, as well as many other options, such as
-          adding new contacts, searching for a contact by name or phone number,
-          and deleting old contacts.
-        </h1>
+        <div className={styles.titleLoggedIn}>
+        <p>Hello, You are successfully logged in as {' '} 
+          <span className={styles.span}>{email}</span>. </p> 
+        <p>
+        Phonebook application was created to help You quickly looking up contact information
+          without having to manually search through paper records or address books.</p>  
+        <p>Organize Your contacts and always stay in touch</p>
+        </div>
       )}
     </>
   );
