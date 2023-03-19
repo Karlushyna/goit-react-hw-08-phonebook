@@ -6,10 +6,11 @@
 }
 
 .link:global(.active) {
-  color: orangered;
+  color: rgb(129, 172, 226);
   font-weight: bold;
 }
 
 .span {
   margin: 0px 10px;
 }
+

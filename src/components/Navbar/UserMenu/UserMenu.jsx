@@ -16,7 +16,7 @@ export const UserMenu = () => {
   return (
     <div>
       <span className={styles.userName}>{email}</span>
-      <Button onClick={onLogout}>Logout</Button>
+      <Button onClick={onLogout}>Log Out</Button>
     </div>
   );
 };

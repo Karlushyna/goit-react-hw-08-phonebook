@@ -16,7 +16,8 @@
 
 .link {
   text-decoration: none;
-  color: black;
+  /* font-weight: bold; */
+  color: rgb(125, 157, 179);
   display: inline-block;
   padding: 10px 15px;
 }
@@ -25,3 +26,5 @@
   color: rgb(129, 172, 226);
   font-weight: bold;
 }
+
+
